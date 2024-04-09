@@ -28,14 +28,14 @@
         });
     
         const geojsonLayer = new GeoJSONLayer({
-        url: "https://amberbark.github.io/geojsons-and-esri.js/MegaCitiesBark.geojson"
+        url: "https://amberbark.github.io/geojsons-and-esri.js/MegaCitiesBark.geojson",
         copyright: "Barkevich"
         });
 
         const view = new MapView({
           map: map,
           center: [0,0], // Longitude, latitude
-          zoom: 4, // Zoom level
+          zoom: 3, // Zoom level
           container: "viewDiv", // Div element
           layers: [geojsonLayer]
         });
