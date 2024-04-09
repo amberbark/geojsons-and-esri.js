@@ -19,40 +19,39 @@
     <script src="https://js.arcgis.com/4.28/"></script>
 
     <script>
-      require(["esri/config", "esri/Map","esri/layers/GeoJSONLayer", "esri/views/MapView"], function(esriConfig, Map, GeoJSONLayer, MapView) {
-    
-        esriConfig.apiKey = "AAPK7d13587c1f82408cbc5a040c7059d8fee7IBoeXwdO2zPSzZvEywKiEr-G85VeIgjX2FmIlp-IoFVmo7QLBxqKibLvYv8ppp";
-    
-        const map = new Map({
-          basemap: "arcgis/topographic" // basemap styles service
-        });
-    
-        const renderer = {
-        type: "simple",
-        field: "City",
-        symbol: {
-          type: "simple-marker",
-          color: "orange",
-          outline: {
-            color: "white"
-          }
-        },
-        
-        const geojsonLayer = new GeoJSONLayer({
-        url: "https://amberbark.github.io/geojsons-and-esri.js/MegaCitiesBark.geojson",
-        copyright: "Barkevich"
-        renderer: renderer
-        });
+    require(["esri/config", "esri/Map","esri/layers/GeoJSONLayer", "esri/views/MapView"], function(esriConfig, Map, GeoJSONLayer, MapView) {
 
-        const view = new MapView({
-          map: map,
-          center: [0,0], // Longitude, latitude
-          zoom: 2, // Zoom level
-          container: "viewDiv", // Div element
-          layers: [geojsonLayer]
-        });
-    
-      });
+esriConfig.apiKey = "AAPK7d13587c1f82408cbc5a040c7059d8fee7IBoeXwdO2zPSzZvEywKiEr-G85VeIgjX2FmIlp-IoFVmo7QLBxqKibLvYv8ppp";
+
+const map = new Map({
+  basemap: "arcgis/topographic" // basemap styles service
+});
+
+const renderer = {
+  type: "simple",
+  symbol: {
+    type: "simple-marker",
+    color: "red",
+    size: "10px",
+    outline: {
+      color: "white"
+    }
+  }
+};
+
+const geojsonLayer = new GeoJSONLayer({
+  url: "https://amberbark.github.io/geojsons-and-esri.js/MegaCitiesBark.geojson",
+  renderer: renderer
+});
+
+map.add(geojsonLayer);
+
+const view = new MapView({
+  container: "viewDiv",
+  map: map,
+  zoom: 2
+});
+});
     </script>
 
   </head>
