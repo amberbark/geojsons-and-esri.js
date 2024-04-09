@@ -27,15 +27,27 @@
           basemap: "arcgis/topographic" // basemap styles service
         });
     
+        const renderer = {
+        type: "simple",
+        field: "City",
+        symbol: {
+          type: "simple-marker",
+          color: "orange",
+          outline: {
+            color: "white"
+          }
+        },
+        
         const geojsonLayer = new GeoJSONLayer({
         url: "https://amberbark.github.io/geojsons-and-esri.js/MegaCitiesBark.geojson",
         copyright: "Barkevich"
+        renderer: renderer
         });
 
         const view = new MapView({
           map: map,
           center: [0,0], // Longitude, latitude
-          zoom: 3, // Zoom level
+          zoom: 2, // Zoom level
           container: "viewDiv", // Div element
           layers: [geojsonLayer]
         });
